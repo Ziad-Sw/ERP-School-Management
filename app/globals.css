@@ -53,8 +53,8 @@
   --color-sidebar-bg: var(--color-sidebar-bg);
   --color-input-fill: var(--color-input-fill);
 
-  --font-tajawal: var(--font-tajawal);
-  --font-poppins: var(--font-poppins);
+  --font-tajawal: "Tajawal", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
 }
 
 body {

@@ -1,5 +1,16 @@
 {
   "HomePage": {
     "title": "Welcome to the School Management System"
+  },
+  "Login": {
+    "welcome": "Welcome to the School Management System",
+    "title": "Login",
+    "subtitle": "Login is reserved for school administrators and authorized personnel",
+    "idPlaceholder": "Enter ID",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot Password?",
+    "loginButton": "Login",
+    "heroTitle": "School-Management – Centralized School Management Dashboard",
+    "heroDescription": "A centralized system to help you manage, monitor, and organize all school operations from a single location."
   }
-}
+} 
