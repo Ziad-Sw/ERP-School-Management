@@ -1,9 +1,16 @@
 import { redirect } from "next/navigation";
+import { routing } from "../../lib/i18n/routing";
 
-export default function HomePage({
+export default async function HomePage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  redirect(`/${params.locale}/login`);
+  const { locale } = await params;
+
+  if (!routing.locales.includes(locale as "ar" | "en")) {
+    redirect("/ar/login");
+  }
+
+  redirect(`/${locale}/login`);
 }

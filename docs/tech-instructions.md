@@ -18,72 +18,139 @@
 | i18n | next-intl | عربي (افتراضي) + إنجليزي، RTL/LTR كامل |
 | Charts | Recharts | |
 | Animation | Framer Motion | |
+| Fonts | Fontsource (`@fontsource/tajawal`, `@fontsource/poppins`) | Self-hosted، مش `next/font/google` — قرار اتخد بعد مشكلة تحميل الخط أونلاين |
+| Class merging | `tailwind-merge` | لحل تعارض الكلاسات وقت الـ override من برة (زي العرض) |
+| Icons | Lucide React | |
 
 ---
 
-## 2. بنية الفولدرات
+## 2. بنية الفولدرات (Feature-based Architecture)
+
+القرار المعماري: كل موديول (Feature) بيجمع كومبوننتاته، الهوكس بتاعته، وطبقة الـ API الخاصة بيه في فولدر واحد مستقل تحت `/features`. الهدف: أي حد يفتح فولدر موديول معيّن يلاقي كل حاجة خاصة بيه في مكان واحد، وإضافة موديول جديد مستقبلًا ما تأثرش على الموديولات التانية.
 
 ```
 /app
-  /[locale]                    ← next-intl routing
-    /(auth)/login/page.tsx
-    /(dashboard)/dashboard/page.tsx
-    /(dashboard)/students/page.tsx
-    /(dashboard)/students/[id]/page.tsx
-    ...
+  /[locale]
+    /(auth)
+      /login/page.tsx
+      /forgot-password/page.tsx
+      /verify-code/page.tsx
+      /reset-password/page.tsx
+      /first-time-login/page.tsx
+      /onboarding/page.tsx
+      /offline/page.tsx
+      /loading/page.tsx
+    /(dashboard)
+      layout.tsx
+      /dashboard/page.tsx
+      /students/page.tsx
+      /students/[id]/page.tsx
+      /teachers/page.tsx
+      /employees/page.tsx
+      /schedule/page.tsx
+      /exams/page.tsx
+      /settings/page.tsx
+    page.tsx              ← Redirect لصفحة /login
+    layout.tsx
+  favicon.ico
+  globals.css
+
 /components
-  /ui                          ← Button-ERP, Input, Card, إلخ (من design-system.md)
-  /shared                      ← Sidebar, Header, ScheduleGrid (مشترك بين موديولين)
-  /[module]                    ← كومبوننتات خاصة بموديول معيّن (زي /students, /teachers)
+  /ui                     ← كومبوننتات عامة مشتركة بين كل الموديولات (Button, Input, Card)
+  /shared                 ← كومبوننتات مشتركة بين موديولين أو أكتر (Sidebar, Header, ScheduleGrid)
+
+/features                 ← كل موديول (Feature) في فولدر مستقل
+  /login
+    /components           ← كومبوننتات خاصة بموديول اللوجين بس
+    /hooks                 ← useLogin.ts, useForgotPassword.ts, ...
+    /api                    ← login.api.ts (دوال الطلب)
+    /types.ts               ← LoginRequest, LoginResponse, ...
+  /dashboard
+    /components
+    /hooks
+    /api
+    /types.ts
+  /students
+    /components
+    /hooks
+    /api
+    /types.ts
+  /teachers
+    /components
+    /hooks
+    /api
+    /types.ts
+  /employees
+    /components
+    /hooks
+    /api
+    /types.ts
+  /schedule
+    /components
+    /hooks
+    /api
+    /types.ts
+  /exams
+    /components
+    /hooks
+    /api
+    /types.ts
+  /settings
+    /components
+    /hooks
+    /api
+    /types.ts
+
 /lib
   /api
-    client.ts
-    /modules
-      auth.api.ts
-      students.api.ts
-      teachers.api.ts
-      employees.api.ts
-      schedule.api.ts
-      exams.api.ts
-      settings.api.ts
-/types
-  auth.types.ts
-  student.types.ts
-  teacher.types.ts
-  employee.types.ts
-  schedule.types.ts
-  ...
-/mocks
-  handlers.ts
-  browser.ts
-  server.ts                    ← لتشغيل MSW في Production (Node environment)
-/hooks
-  useAuth.ts
-  useStudents.ts
-  ...
+    client.ts              ← fetch wrapper مشترك، كل الموديولات بتستخدمه
+  /i18n
+    routing.ts
+    request.ts
+
 /store
-  authStore.ts                 ← Zustand + persist
-  draftStore.ts                ← Zustand + persist (Draft forms)
+  authStore.ts              ← Zustand + persist (عبر كل الموديولات)
+  draftStore.ts             ← Zustand + persist (عبر كل الموديولات)
+
+/mocks
+  handlers.ts                ← بيجمع الـ MSW handlers من كل features/[module]/api
+  browser.ts
+  server.ts
+
 /messages
   ar.json
   en.json
+
 /docs
   prd.md
   design-system.md
   workflow.md
   tech-instructions.md
   progress.md
+
+middleware.ts (جذر المشروع)
 ```
+
+### القاعدة الفاصلة بين `/components` و`/features/[module]/components`
+
+| السؤال | لو الإجابة "أيوه" | لو الإجابة "لأ" |
+|---|---|---|
+| الكومبوننت ده هيتستخدم في **أكتر من موديول**؟ | `/components/ui` أو `/components/shared` | `/features/[module]/components` |
+| الكومبوننت ده **خاص بمنطق موديول واحد بس**؟ | `/features/[module]/components` | راجع السؤال اللي فوق |
+
+**مثال:** `Button.tsx` و`Input.tsx` عامين وبيتكرروا في كل موديول → `/components/ui`.
+`ScheduleGrid.tsx` بيتشارك بين موديول الجدول الدراسي والامتحانات بس → `/components/shared`.
+`StudentEnrollmentForm.tsx` خاص بموديول الطلاب بس → `/features/students/components`.
 
 ---
 
 ## 3. معمارية طبقة الـ API
 
 كل Feature بيتبع نفس الـ Pattern:
-1. `types/[module].types.ts` — الـ Interface (العقد المتوقع من الـ Backend)
-2. `mocks/handlers.ts` — MSW handler بنفس شكل الـ Type بالظبط
-3. `lib/api/modules/[module].api.ts` — دوال الطلب (`fetch` wrapper حول `client.ts`)
-4. `hooks/use[Module].ts` — React Query hook (`useQuery`/`useMutation`) بيستخدم دالة الـ API
+1. `features/[module]/types.ts` — الـ Interface (العقد المتوقع من الـ Backend)
+2. `mocks/handlers.ts` — MSW handler بنفس شكل الـ Type بالظبط (بيجمع الـ handlers من كل موديول)
+3. `features/[module]/api/[module].api.ts` — دوال الطلب (`fetch` wrapper حول `lib/api/client.ts`)
+4. `features/[module]/hooks/use[Module].ts` — React Query hook (`useQuery`/`useMutation`) بيستخدم دالة الـ API
 
 **قاعدة صارمة:** الكومبوننتات ممنوع تستدعي `fetch` مباشرة أو تستورد من `mocks/` — لازم تمر بالـ Hook بس.
 
@@ -114,7 +181,7 @@
 ---
 
 ## 6. قاعدة التوكنز والألوان
-كل قيمة لونية أو Spacing في `tailwind.config.ts` لازم تيجي من `design-system.md` فقط. أي طلب تنفيذ لشاشة جديدة بيتضمن قسم الألوان المرتبط من design-system.md كـ Context.
+كل قيمة لونية أو Spacing في `tailwind.config.ts` / `globals.css` لازم تيجي من `design-system.md` فقط. أي طلب تنفيذ لشاشة جديدة بيتضمن قسم الألوان المرتبط من design-system.md كـ Context.
 
 ---
 
@@ -130,6 +197,14 @@ Run the "clean-code-guard" and "test-guard" skills after making these changes.
 - كل نص في الواجهة لازم يمر من `messages/ar.json` أو `messages/en.json` — ممنوع نص Hardcoded داخل الكومبوننت
 - الاتجاه (RTL/LTR) بيتغيّر تلقائيًا مع اللغة عبر `dir` attribute في الـ `<html>`
 - الأرقام دايمًا بخط Poppins بغض النظر عن اللغة (قاعدة من design-system.md)
+
+---
+
+## 9. قاعدة التحكم في العرض (Width) للكومبوننتات المشتركة
+
+- الكومبوننتات العامة (`Button`, `Input`) بتاخد عرض افتراضي ثابت جوه الملف نفسه (`sizeStyles` لكل Size)
+- أي صفحة تقدر تلغي (Override) العرض الافتراضي عن طريق `className="w-[...]"` وقت الاستدعاء، وده بيتحل صح بفضل `tailwind-merge`
+- ممنوع تكرار خصائص بصرية موحّدة (زي مقاس ولون الأيقونة جوه الـ Input) في كل صفحة — لو تكررت 3-4 مرات، تتنقل جوه الكومبوننت نفسه (عبر `cloneElement`) بدل التكرار
 
 ---
 

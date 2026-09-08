@@ -8,6 +8,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "../../lib/i18n/routing";
+import { Providers } from "../providers";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export default async function RootLayout({
     <html lang={locale} dir={dir}>
       <body className="min-h-full flex flex-col antialiased">
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>

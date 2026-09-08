@@ -27,6 +27,11 @@
   --color-card-bg: #f2f0f7;
   --color-sidebar-bg: #fafafa;
   --color-input-fill: #f6f5fa;
+
+  /* شفافيات */
+  --color-alpha-brand-16: rgba(13, 148, 136, 0.16);
+  --color-alpha-brand-32: rgba(13, 148, 136, 0.32);
+  --color-alpha-secondary-16: rgba(255, 107, 74, 0.16);
 }
 
 @theme inline {
@@ -52,6 +57,10 @@
   --color-card-bg: var(--color-card-bg);
   --color-sidebar-bg: var(--color-sidebar-bg);
   --color-input-fill: var(--color-input-fill);
+
+  --color-alpha-brand-16: var(--color-alpha-brand-16);
+  --color-alpha-brand-32: var(--color-alpha-brand-32);
+  --color-alpha-secondary-16: var(--color-alpha-secondary-16);
 
   --font-tajawal: "Tajawal", sans-serif;
   --font-poppins: "Poppins", sans-serif;
