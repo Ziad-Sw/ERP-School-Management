@@ -1,5 +1,0 @@
-export interface Teacher {
-  id: string;
-  fullName: string;
-  subject: string;
-}

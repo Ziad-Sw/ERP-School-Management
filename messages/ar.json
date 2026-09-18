@@ -3,18 +3,21 @@
     "title": "مرحبًا بك في نظام إدارة المدرسة"
   },
   "Login": {
-    "welcome": "اهلاً بك في نظام School-Management للأدارة المدرسية",
+    "topBar": "سجل الدخول",
+    "welcome": "أهلاً بك في نظام School-Management للإدارة المدرسية",
     "title": "تسجيل الدخول",
     "subtitle": "الدخول مخصص لإدارة المدرسة والمشرفين المعتمدين",
-    "idPlaceholder": "ادخال ال ID",
+    "subtitleLine1": "الدخول مخصص لإدارة المدرسة",
+    "subtitleLine2": "والمشرفين المعتمدين",
+    "idPlaceholder": "أدخل رقم الهاتف الخاص بك",
     "passwordPlaceholder": "كلمة السر",
     "forgotPassword": "نسيت كلمة السر؟",
     "loginButton": "تسجيل الدخول",
     "loggingIn": "جاري تسجيل الدخول...",
-    "heroTitle": "School-Management – نظام الإدارة المدرسية لوحة تحكم لإدارة ومتابعة العمليات المدرسية",
+    "heroTitle": "نظام الإدارة المدرسية – School-Management",
+    "heroSubtitle": "لوحة تحكم لإدارة ومتابعة العمليات المدرسية",
     "heroDescription": "نظام مركزي يساعدك على إدارة ومراقبة وتنظيم جميع العمليات المدرسية من مكان واحد.",
 
-    "demoCredentialsTitle": "بيانات تجريبية",
     "demoCredentialsText": "للتجربة: ID: {id} / كلمة السر: {password}",
     "quickDemoLogin": "دخول تجريبي سريع",
 
@@ -82,6 +85,17 @@
     "offlineDescription": "يرجى التحقق من اتصالك بالإنترنت ثم إعادة المحاولة",
     "retryButton": "إعادة المحاولة",
 
-    "loadingText": "جاري التحميل..."
+    "loadingText": "جاري التحميل...",
+
+    "createAccount": "انشاء حساب",
+    "alreadyHaveAccount": "ليس لديك حساب؟",
+    "loginWithMyAccount": "تسجيل الدخول بحسابي",
+    "signupTitle": "إنشاء حساب جديد",
+    "signupDescription": "أنشئ حسابك للبدء في استخدام النظام",
+    "namePlaceholder": "الاسم الكامل",
+    "nameRequired": "يرجى إدخال الاسم",
+    "confirmPasswordPlaceholderSignup": "تأكيد كلمة السر",
+    "signupButton": "إنشاء الحساب",
+    "signingUp": "جاري إنشاء الحساب..."
   }
 }

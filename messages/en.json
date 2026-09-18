@@ -3,18 +3,21 @@
     "title": "Welcome to the School Management System"
   },
   "Login": {
-    "welcome": "Welcome to the School Management System",
+    "topBar": "Login",
+    "welcome": "Welcome to the School-Management school administration system",
     "title": "Login",
     "subtitle": "Login is reserved for school administrators and authorized personnel",
-    "idPlaceholder": "Enter ID",
+    "subtitleLine1": "Login is reserved for school administration",
+    "subtitleLine2": "and authorized supervisors",
+    "idPlaceholder": "Enter your phone number",
     "passwordPlaceholder": "Password",
     "forgotPassword": "Forgot Password?",
     "loginButton": "Login",
     "loggingIn": "Logging in...",
-    "heroTitle": "School-Management – Centralized School Management Dashboard",
+    "heroTitle": "School Management System – School-Management",
+    "heroSubtitle": "A dashboard to manage and monitor school operations",
     "heroDescription": "A centralized system to help you manage, monitor, and organize all school operations from a single location.",
 
-    "demoCredentialsTitle": "Demo Credentials",
     "demoCredentialsText": "For demo: ID: {id} / Password: {password}",
     "quickDemoLogin": "Quick Demo Login",
 
@@ -82,6 +85,17 @@
     "offlineDescription": "Please check your internet connection and try again",
     "retryButton": "Retry",
 
-    "loadingText": "Loading..."
+    "loadingText": "Loading...",
+
+    "createAccount": "Create account",
+    "alreadyHaveAccount": "Don't have an account?",
+    "loginWithMyAccount": "Login with my account",
+    "signupTitle": "Create New Account",
+    "signupDescription": "Create your account to get started",
+    "namePlaceholder": "Full name",
+    "nameRequired": "Please enter your name",
+    "confirmPasswordPlaceholderSignup": "Confirm password",
+    "signupButton": "Create Account",
+    "signingUp": "Creating account..."
   }
 }

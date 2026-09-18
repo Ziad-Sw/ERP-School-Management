@@ -23,10 +23,29 @@
 
   /* محايدة */
   --color-text: #220b3d;
+  --color-text-color-a-button: #FFFFFF;
   --color-gray: #73717a;
   --color-card-bg: #f2f0f7;
   --color-sidebar-bg: #fafafa;
   --color-input-fill: #f6f5fa;
+  --color-stroke: #7DD3C7;
+
+  /* ألوان مميزة إضافية (Category colors) */
+  --color-some-parts-students: #FF8F73;
+  --color-student-health: #38BDF8;
+
+  /* Corner Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-lg-2: 32px;
+  --radius-lg-3: 40px;
+  --radius-lg-4: 48px;
+  --radius-lg-5: 56px;
+  --radius-lg-6: 64px;
+
+  /* Card shadow */
+  --shadow-card: 0px 1px 8px rgba(29, 9, 51, 0.16);
 
   /* شفافيات */
   --color-alpha-brand-16: rgba(13, 148, 136, 0.16);
@@ -53,17 +72,33 @@
   --color-blue-600: var(--color-blue-600);
 
   --color-text: var(--color-text);
+  --color-text-color-a-button: var(--color-text-color-a-button);
   --color-gray: var(--color-gray);
   --color-card-bg: var(--color-card-bg);
   --color-sidebar-bg: var(--color-sidebar-bg);
   --color-input-fill: var(--color-input-fill);
+  --color-stroke: var(--color-stroke);
+  --color-some-parts-students: var(--color-some-parts-students);
+  --color-student-health: var(--color-student-health);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-lg-2: var(--radius-lg-2);
+  --radius-lg-3: var(--radius-lg-3);
+  --radius-lg-4: var(--radius-lg-4);
+  --radius-lg-5: var(--radius-lg-5);
+  --radius-lg-6: var(--radius-lg-6);
+
+  --shadow-card: var(--shadow-card);
 
   --color-alpha-brand-16: var(--color-alpha-brand-16);
   --color-alpha-brand-32: var(--color-alpha-brand-32);
   --color-alpha-secondary-16: var(--color-alpha-secondary-16);
 
   --font-tajawal: "Tajawal", sans-serif;
-  --font-poppins: "Poppins", sans-serif;
+  --font-plex-sans: "IBM Plex Sans", sans-serif;
+  --font-sansita: "Sansita", sans-serif;
 }
 
 body {
