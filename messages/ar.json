@@ -2,6 +2,10 @@
   "HomePage": {
     "title": "مرحبًا بك في نظام إدارة المدرسة"
   },
+  "Home": {
+    "title": "نظام إدارة المدرسة",
+    "subtitle": "التطبيق شغال — ابدأ التنفيذ من موديول تسجيل الدخول"
+  },
   "Login": {
     "topBar": "سجل الدخول",
     "welcome": "أهلاً بك في نظام School-Management للإدارة المدرسية",
@@ -9,7 +13,6 @@
     "subtitle": "الدخول مخصص لإدارة المدرسة والمشرفين المعتمدين",
     "subtitleLine1": "الدخول مخصص لإدارة المدرسة",
     "subtitleLine2": "والمشرفين المعتمدين",
-    "idPlaceholder": "أدخل رقم الهاتف الخاص بك",
     "passwordPlaceholder": "كلمة السر",
     "forgotPassword": "نسيت كلمة السر؟",
     "loginButton": "تسجيل الدخول",
@@ -18,10 +21,8 @@
     "heroSubtitle": "لوحة تحكم لإدارة ومتابعة العمليات المدرسية",
     "heroDescription": "نظام مركزي يساعدك على إدارة ومراقبة وتنظيم جميع العمليات المدرسية من مكان واحد.",
 
-    "demoCredentialsText": "للتجربة: ID: {id} / كلمة السر: {password}",
     "quickDemoLogin": "دخول تجريبي سريع",
 
-    "idRequired": "يرجى إدخال الـ ID",
     "passwordRequired": "يرجى إدخال كلمة السر",
     "invalidCredentials": "بيانات الدخول غير صحيحة. يرجى التحقق والمحاولة مرة أخرى.",
     "lockedButton": "حساب مقفل ({seconds} ثانية)",

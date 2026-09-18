@@ -2,6 +2,10 @@
   "HomePage": {
     "title": "Welcome to the School Management System"
   },
+  "Home": {
+    "title": "School Management System",
+    "subtitle": "App is running — next step is the Login module"
+  },
   "Login": {
     "topBar": "Login",
     "welcome": "Welcome to the School-Management school administration system",
@@ -9,7 +13,6 @@
     "subtitle": "Login is reserved for school administrators and authorized personnel",
     "subtitleLine1": "Login is reserved for school administration",
     "subtitleLine2": "and authorized supervisors",
-    "idPlaceholder": "Enter your phone number",
     "passwordPlaceholder": "Password",
     "forgotPassword": "Forgot Password?",
     "loginButton": "Login",
@@ -18,10 +21,8 @@
     "heroSubtitle": "A dashboard to manage and monitor school operations",
     "heroDescription": "A centralized system to help you manage, monitor, and organize all school operations from a single location.",
 
-    "demoCredentialsText": "For demo: ID: {id} / Password: {password}",
     "quickDemoLogin": "Quick Demo Login",
 
-    "idRequired": "Please enter your ID",
     "passwordRequired": "Please enter your password",
     "invalidCredentials": "Invalid credentials. Please check and try again.",
     "lockedButton": "Account locked ({seconds}s)",

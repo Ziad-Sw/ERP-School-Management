@@ -22,12 +22,12 @@
   --color-blue-600: #2563EB;
 
   /* محايدة */
-  --color-text: #220b3d;
+  --color-text-color: #220b3d;
   --color-text-color-a-button: #FFFFFF;
   --color-gray: #73717a;
-  --color-card-bg: #f2f0f7;
-  --color-sidebar-bg: #fafafa;
-  --color-input-fill: #f6f5fa;
+  --color-card-background: #f2f0f7;
+  --color-slide-bar: #fafafa;
+  --color-input-field-fill: #f6f5fa;
   --color-stroke: #7DD3C7;
 
   /* ألوان مميزة إضافية (Category colors) */
@@ -50,7 +50,7 @@
   /* شفافيات */
   --color-alpha-brand-16: rgba(13, 148, 136, 0.16);
   --color-alpha-brand-32: rgba(13, 148, 136, 0.32);
-  --color-alpha-secondary-16: rgba(255, 107, 74, 0.16);
+  --color-opiste-secondary-16: rgba(255, 107, 74, 0.16);
 }
 
 @theme inline {
@@ -71,12 +71,12 @@
   --color-blue-500: var(--color-blue-500);
   --color-blue-600: var(--color-blue-600);
 
-  --color-text: var(--color-text);
+  --color-text-color: var(--color-text-color);
   --color-text-color-a-button: var(--color-text-color-a-button);
   --color-gray: var(--color-gray);
-  --color-card-bg: var(--color-card-bg);
-  --color-sidebar-bg: var(--color-sidebar-bg);
-  --color-input-fill: var(--color-input-fill);
+  --color-card-background: var(--color-card-background);
+  --color-slide-bar: var(--color-slide-bar);
+  --color-input-field-fill: var(--color-input-field-fill);
   --color-stroke: var(--color-stroke);
   --color-some-parts-students: var(--color-some-parts-students);
   --color-student-health: var(--color-student-health);
@@ -94,7 +94,7 @@
 
   --color-alpha-brand-16: var(--color-alpha-brand-16);
   --color-alpha-brand-32: var(--color-alpha-brand-32);
-  --color-alpha-secondary-16: var(--color-alpha-secondary-16);
+  --color-opiste-secondary-16: var(--color-opiste-secondary-16);
 
   --font-tajawal: "Tajawal", sans-serif;
   --font-plex-sans: "IBM Plex Sans", sans-serif;
@@ -103,6 +103,6 @@
 
 body {
   background: #ffffff;
-  color: var(--color-text);
+  color: var(--color-text-color);
   font-family: var(--font-tajawal), sans-serif;
 }
